@@ -190,7 +190,7 @@ jobs:
         run: |
          cd kernel_workspace/kernel_platform
          sed -i '$s|echo "\$res"|echo "\${{ github.event.inputs.KERNEL_NAME }}"|' ./common/scripts/setlocalversion
-         sed -i "/stable_scmversion_cmd/s/-maybe-dirty//g" ./build/kernel/kleaf/impl/stamp.bzl
+         #sed -i "/stable_scmversion_cmd/s/-maybe-dirty//g" ./build/kernel/kleaf/impl/stamp.bzl
   
       - name: Build kernel
         if: github.event.inputs.CPU == 'sm8650' 
@@ -221,4 +221,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
          name: Image_KernelSU_${{ env.KSUVER }}_${{ github.event.inputs.FEIL }}
-         path: kernel_workspace/kernel
+         path: kernel_workspace/kernel_platform/out/msm-waipio-waipio-gki/dist/Image
